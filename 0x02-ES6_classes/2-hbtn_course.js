@@ -1,64 +1,22 @@
-export default class HolbertonCourse {
-  /**
-   * Createses
-   *
-   * @param 
-   * @pa
-   * @param {String[]} students - The names of students in the course.
-   */
-  constructor(name, length, students) {
-    this.name = name;
-    this.length = length;
-    this.students = students;
+import Car from './10-car';
+
+export default class EVCar extends Car {
+  constructor(brand, motor, color, range) {
+    super(brand, motor, color);
+    this.range = range;
   }
 
-  /**
-   * Gets the name of this course.
-   */
-  get name() {
-    return this._name;
-  }
-  set name(value) {
-    if (typeof value !== 'string') {
-      throw new TypeError('Name must be a string');
-    }
-    this._name = value;
+  get range() {
+    return this._range;
   }
 
-  /**
-   * Gets the length of this course (in months).
-   */
-  get length() {
-    return this._length;
+  set range(value) {
+    this._range = value;
   }
 
-  /**
-   * Sets the length of this course (in months).
-   */
-  set length(value) {
-    if (typeof value !== 'number') {
-      throw new TypeError('Length must be a number');
-    }
-    this._length = value;
-  }
+  cloneCar() {
+    const Species = super.constructor[Symbol.species];
 
-  /**
-   * Geting 
-   */
-  get students() {
-    return this._students;
-  }
-
-  /**
-   * Seting array
-   */
-  set students(value) {
-    if (!(value instanceof Array)) {
-      throw new TypeError('Students must be an array of strings');
-    }
-    if (!value.every((student) => typeof student === 'string')) {
-      throw new TypeError('Students must be an array of strings');
-    }
-    this._students = value;
+    return new Species();
   }
 }
